@@ -1,0 +1,16 @@
+@import "config";
+
+body {
+    background: bisque;
+}
+
+.append {
+    border: 1px solid black;
+    min-height: 300px;
+    margin: 30px;
+    padding: 10px;
+    & > img {
+        padding: 5px;
+        height: 300px;
+    }
+}
