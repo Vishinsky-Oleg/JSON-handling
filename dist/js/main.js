@@ -57,7 +57,7 @@ myForm.addEventListener('submit', function (e) {
     console.log(JSON.stringify(new Item(myName.value, myPrice.value, myIsNew.checked, fileNames)));
     // console.log(new Item(myName.value, myPrice.value, myIsNew.checked, fileNames));
 
-    
+
 
 })
 myImageName.addEventListener('change', function () {
@@ -74,3 +74,26 @@ myImageName.addEventListener('click', function () {
         img.parentNode.removeChild(img);
     });
 })
+
+const items = document.querySelector('.items');
+
+let itemsJson;
+
+
+fetch('myjsonfile.json').then(function (response) {
+    if (response.ok) {
+        response.json().then(function (json) {
+            products = json;
+            for (item of products) {
+                console.log(item.name);
+            }
+        });
+    } else {
+        console.log(
+            "Network request for products.json failed with response " +
+            response.status +
+            ": " +
+            response.statusText
+        );
+    }
+});
