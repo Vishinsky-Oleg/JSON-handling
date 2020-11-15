@@ -77,7 +77,7 @@ myImageName.addEventListener('click', function () {
 
 const items = document.querySelector('.items');
 
-let itemsJson;
+// let itemsJson;
 
 const container = document.querySelector('.items');
 fetch('myjsonfile.json').then(function (response) {
@@ -161,7 +161,7 @@ fetch('myjsonfile.json').then(function (response) {
     }
 });
 
-
+//FOR ALREADY EXISTING BUTTONS
 const inputButMinus = document.querySelector('.input-change-minus');
 inputButMinus.addEventListener('click', () => {
     if (inputButMinus.nextElementSibling.value != '1') {
@@ -173,24 +173,27 @@ const inputButPlus = document.querySelector('.input-change-plus');
 inputButPlus.addEventListener('click', () => {
     inputButPlus.previousElementSibling.value = parseInt(inputButMinus.nextElementSibling.value) + 1;
 })
+// _______________________________________
 
+// let ordered = ['2222', '3333', '1111', '2111', '1234', '3333x5', '2222x3', '2222', '2222', '2111x3', '2111', '2222'];
+// array_elements = ["a", "b", "c", "d", "e", "a", "b", "c", "f", "g", "h", "h", "h", "e", "a"];
 
-let ordered = ['2222', '3333', '1111', '2111', '1234', '3333x5', '2222x3', '2222', '2222', '2111x3', '2111', '2222'];
 // ordered.sort();
 // console.log(ordered);
 
-function count(array_elements) {
-    // array_elements = ["a", "b", "c", "d", "e", "a", "b", "c", "f", "g", "h", "h", "h", "e", "a"];
-
+function orderToObject(orderStr) {
+    let array_elements = orderStr.split(',')
     array_elements.sort();
 
-    var current = null;
-    var cnt = 0;
-    for (var i = 0; i < array_elements.length; i++) {
+    let current = null;
+    let cnt = 0;
+    let fullOrder = {}; //NEW OBJECT
+    for (let i = 0; i < array_elements.length; i++) {
         if (!array_elements[i].includes(current)) {
             if (!array_elements[i].includes('x')) {
                 if (cnt > 0) {
-                    console.log(current + ' comes --> ' + cnt + ' times<br>');
+                    fullOrder[current] = cnt;
+                    // console.log(current + ' comes --> ' + cnt + ' times<br>');
                 }
                 current = array_elements[i];
                 cnt = 1;
@@ -208,9 +211,38 @@ function count(array_elements) {
         }
     }
     if (cnt > 0) {
-        console.log(current + ' comes --> ' + cnt + ' times');
+        fullOrder[current] = cnt;
+        // console.log(current + ' comes --> ' + cnt + ' times');
     }
-
+    // console.log(fullOrder);
+    return fullOrder; //RETURN OBJECT WITH KEY/VALUE ID/COUNT FROM TAKEN STRING
 }
 
-count(ordered);
+// count(ordered);
+
+// let oo = orderToObject(localStorage.order);
+// for (let i in oo) {
+//     console.log(i + ' ' + oo[i]);
+// }
+// orderToString(orderToObject(ordered.join(',')));
+// count(localStorage.order).entries();
+
+function orderToString(fullOrder) {
+    let newOrder = '';
+    let arrayObj = Object.entries(fullOrder); //Object to array of arrays
+    arrayObj.forEach(element => {
+        // console.log(arrayObj.indexOf(element));
+
+        if (arrayObj.indexOf(element) === arrayObj.length - 1) { //If index of item is last
+            newOrder += element[0] + 'x' + element[1];
+
+        } else {
+            newOrder += element[0] + 'x' + element[1] + ',';
+
+        }
+    });
+    // console.log(newOrder);
+    return newOrder; //RETURN NEW STRING LIKE WAS TAKEN FROM LOCALSTORAGE BUT PROCESSED
+}
+
+// console.log();
