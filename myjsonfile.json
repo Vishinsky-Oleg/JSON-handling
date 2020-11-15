@@ -1,4 +1,15 @@
-[
-    {"name":"sdf","price":"123","isNew":true,"imagePath":["1.jpg"]},
-    {"name":"asdasf","price":"2342","isNew":false,"imagePath":["2.jpg"]}
+[{
+        "name": "sdf",
+        "id": "4444",
+        "price": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?",
+        "isNew": true,
+        "imagePath": ["1.jpg"]
+    },
+    {
+        "name": "asdasf",
+        "id": "5555",
+        "price": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?",
+        "isNew": false,
+        "imagePath": ["2.jpg"]
+    }
 ]

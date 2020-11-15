@@ -79,13 +79,76 @@ const items = document.querySelector('.items');
 
 let itemsJson;
 
-
+const container = document.querySelector('.items');
 fetch('myjsonfile.json').then(function (response) {
     if (response.ok) {
         response.json().then(function (json) {
             products = json;
             for (item of products) {
-                console.log(item.name);
+                let itemWrapper = document.createElement('div');
+                let header = document.createElement('h1');
+                let para = document.createElement('p');
+                let inputWrapper = document.createElement('div');
+                let minusBtn = document.createElement('span');
+                let input = document.createElement('input');
+                let plusBtn = document.createElement('span');
+                inputWrapper.classList.add('order-count');
+                minusBtn.classList.add('input-change');
+                minusBtn.textContent = '-';
+                minusBtn.addEventListener('click', () => {
+                    if (minusBtn.nextElementSibling.value != '1') {
+                        minusBtn.nextElementSibling.value = parseInt(minusBtn.nextElementSibling.value) - 1;
+                    }
+                })
+                plusBtn.classList.add('input-change');
+                plusBtn.textContent = '+';
+
+                plusBtn.addEventListener('click', () => {
+                    plusBtn.previousElementSibling.value = parseInt(plusBtn.previousElementSibling.value) + 1;
+                })
+
+                input.type = 'number';
+                input.value = 1;
+                input.min = 1;
+                input.setAttribute('readonly', '');
+                inputWrapper.appendChild(minusBtn);
+                inputWrapper.appendChild(input);
+                inputWrapper.appendChild(plusBtn);
+                let button = document.createElement('button');
+                header.textContent = item.name;
+                para.textContent = item.price;
+                button.textContent = "BUY";
+                button.value = item.id;
+
+
+                itemWrapper.appendChild(header);
+                itemWrapper.appendChild(para);
+                itemWrapper.appendChild(inputWrapper);
+                itemWrapper.appendChild(button);
+                container.appendChild(itemWrapper);
+
+                button.addEventListener('click', () => {
+                    let inputValue = parseInt(button.previousSibling.children[1].value);
+                    if (localStorage.order) {
+                        console.log(inputValue);
+                        if (inputValue > 1) {
+                            localStorage.order += ',' + button.value + 'x' + inputValue;
+
+                        } else {
+                            localStorage.order += ',' + button.value;
+                        }
+
+                    } else {
+                        console.log(inputValue);
+                        if (inputValue > 1) {
+                            localStorage.setItem('order', `${button.value}x${inputValue}`);
+
+                        } else {
+                            localStorage.setItem('order', `${button.value}`);
+                        }
+                    }
+
+                });
             }
         });
     } else {
@@ -97,3 +160,57 @@ fetch('myjsonfile.json').then(function (response) {
         );
     }
 });
+
+
+const inputButMinus = document.querySelector('.input-change-minus');
+inputButMinus.addEventListener('click', () => {
+    if (inputButMinus.nextElementSibling.value != '1') {
+        inputButMinus.nextElementSibling.value = parseInt(inputButMinus.nextElementSibling.value) - 1;
+    }
+})
+
+const inputButPlus = document.querySelector('.input-change-plus');
+inputButPlus.addEventListener('click', () => {
+    inputButPlus.previousElementSibling.value = parseInt(inputButMinus.nextElementSibling.value) + 1;
+})
+
+
+let ordered = ['2222', '3333', '1111', '2111', '1234', '3333x5', '2222x3', '2222', '2222', '2111x3', '2111', '2222'];
+// ordered.sort();
+// console.log(ordered);
+
+function count(array_elements) {
+    // array_elements = ["a", "b", "c", "d", "e", "a", "b", "c", "f", "g", "h", "h", "h", "e", "a"];
+
+    array_elements.sort();
+
+    var current = null;
+    var cnt = 0;
+    for (var i = 0; i < array_elements.length; i++) {
+        if (!array_elements[i].includes(current)) {
+            if (!array_elements[i].includes('x')) {
+                if (cnt > 0) {
+                    console.log(current + ' comes --> ' + cnt + ' times<br>');
+                }
+                current = array_elements[i];
+                cnt = 1;
+            }
+
+        } else {
+            if (array_elements[i].includes('x')) {
+                // console.log(array_elements[i].indexOf('x'));
+                // console.log(array_elements[i].slice(array_elements[i].indexOf('x') + 1));
+                cnt += parseInt(array_elements[i].slice(array_elements[i].indexOf('x') + 1));
+            } else {
+                cnt++;
+
+            }
+        }
+    }
+    if (cnt > 0) {
+        console.log(current + ' comes --> ' + cnt + ' times');
+    }
+
+}
+
+count(ordered);

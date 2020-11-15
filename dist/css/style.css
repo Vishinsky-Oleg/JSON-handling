@@ -20,4 +20,40 @@ body {
   padding: 5px;
   height: 300px;
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  text-align: center;
+  width: 30px;
+  -moz-appearance: textfield;
+}
+
+.input-change {
+  text-align: center;
+  display: inline-block;
+  width: 20px;
+  background: red;
+}
+
+.input-change:hover {
+  cursor: pointer;
+}
+
+.order-count {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
+}
 /*# sourceMappingURL=style.css.map */
