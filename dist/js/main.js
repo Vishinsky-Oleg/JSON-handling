@@ -246,3 +246,13 @@ function orderToString(fullOrder) {
 }
 
 // console.log();
+
+
+
+function countElementsInArray(array) {
+    let count = {};
+    array.forEach(function (i) {
+        count[i] = (count[i] || 0) + 1;
+    });
+    return count;
+}
