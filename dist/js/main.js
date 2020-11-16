@@ -265,7 +265,7 @@ function countElementsInArray(array) {
 }
 
 function fetchingJSONandGetItemsByID() {
-    fetch('myjsonfile.json')
+    fetch('myjsofile.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Something went wrong');
@@ -280,9 +280,10 @@ function fetchingJSONandGetItemsByID() {
             }
         })
         .catch(error => {
-            console.log('There has been an:' + error);
+            console.log('There has been an:' + error.message);
         });
 }
+
 
 function functionsExecutedRightAway() {
     (function () {
@@ -299,6 +300,9 @@ function functionsExecutedRightAway() {
 
 
 const mainHeader = document.querySelector('.main-header');
+const butDrinks = document.querySelector('.d');
+const butOrder = document.querySelector('.o');
+
 // console.log(mainHeader.textContent);
 
 
@@ -329,8 +333,18 @@ async function sortBy(string) {
                 }
             }
         }
-
     }
 }
 
-sortBy(mainHeader.textContent);
+// sortBy(mainHeader.textContent);
+
+console.log(mainHeader.textContent);
+butDrinks.addEventListener('click', () => {
+    mainHeader.textContent = 'Drinks';
+    sortBy(mainHeader.textContent);
+    // console.log(mainHeader.textContent);
+});
+butOrder.addEventListener('click', () => {
+    mainHeader.textContent = 'Order';
+    sortBy(mainHeader.textContent);
+});
