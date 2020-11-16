@@ -1,13 +1,63 @@
 [{
-        "name": "sdf",
-        "id": "4444",
+        "name": "AAA",
+        "type": "drinks",
+        "id": "1111",
         "price": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?",
         "isNew": true,
         "imagePath": ["1.jpg"]
     },
     {
-        "name": "asdasf",
+        "name": "BBB",
+        "type": "drinks",
+        "id": "2222",
+        "price": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?",
+        "isNew": false,
+        "imagePath": ["2.jpg"]
+    },
+    {
+        "name": "CCC",
+        "type": "drinks",
+        "id": "3333",
+        "price": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?",
+        "isNew": false,
+        "imagePath": ["2.jpg"]
+    },
+    {
+        "name": "DDD",
+        "type": "food",
+        "id": "4444",
+        "price": 15,
+        "isNew": false,
+        "imagePath": ["2.jpg"]
+    },
+    {
+        "name": "EEE",
+        "type": "food",
         "id": "5555",
+        "price": 19,
+        "isNew": false,
+        "imagePath": ["2.jpg"]
+    },
+    {
+        "name": "FFF",
+        "type": "food",
+        "id": "6666",
+        "price": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?",
+        "isNew": false,
+        "imagePath": ["2.jpg"]
+    },
+    {
+        "name": "GGG",
+        "type": "hot",
+        "id": "7777",
+        "price": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?",
+        "isNew": false,
+        "imagePath": ["2.jpg"]
+    },
+    {
+        "name": "HHH",
+        "type": "hot",
+        "id": "8888",
         "price": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut animi impedit consequuntur cumque ex voluptas?",
         "isNew": false,
         "imagePath": ["2.jpg"]
