@@ -76,7 +76,7 @@ function formWrapper() {
         });
     })
 }
-const items = document.querySelector('.items');
+// const items = document.querySelector('.items');
 
 // let itemsJson;
 
@@ -181,34 +181,34 @@ function wrapper2() {
 // _______________________________________
 
 // let ordered = ['2222', '3333', '1111', '2111', '1234', '3333x5', '2222x3', '2222', '2222', '2111x3', '2111', '2222'];
-// array_elements = ["a", "b", "c", "d", "e", "a", "b", "c", "f", "g", "h", "h", "h", "e", "a"];
+// arrayElements = ["a", "b", "c", "d", "e", "a", "b", "c", "f", "g", "h", "h", "h", "e", "a"];
 
 // ordered.sort();
 // console.log(ordered);
 
 function orderToObject(orderStr) {
-    let array_elements = orderStr.split(',')
-    array_elements.sort();
+    let arrayElements = orderStr.split(',')
+    arrayElements.sort();
 
     let current = null;
     let cnt = 0;
     let fullOrder = {}; //NEW OBJECT
-    for (let i = 0; i < array_elements.length; i++) {
-        if (!array_elements[i].includes(current)) {
-            if (!array_elements[i].includes('x')) {
+    for (let i = 0; i < arrayElements.length; i++) {
+        if (!arrayElements[i].includes(current)) {
+            if (!arrayElements[i].includes('x')) {
                 if (cnt > 0) {
                     fullOrder[current] = cnt;
                     // console.log(current + ' comes --> ' + cnt + ' times<br>');
                 }
-                current = array_elements[i];
+                current = arrayElements[i];
                 cnt = 1;
             }
 
         } else {
-            if (array_elements[i].includes('x')) {
-                // console.log(array_elements[i].indexOf('x'));
-                // console.log(array_elements[i].slice(array_elements[i].indexOf('x') + 1));
-                cnt += parseInt(array_elements[i].slice(array_elements[i].indexOf('x') + 1));
+            if (arrayElements[i].includes('x')) {
+                // console.log(arrayElements[i].indexOf('x'));
+                // console.log(arrayElements[i].slice(arrayElements[i].indexOf('x') + 1));
+                cnt += parseInt(arrayElements[i].slice(arrayElements[i].indexOf('x') + 1));
             } else {
                 cnt++;
 
@@ -336,7 +336,7 @@ async function sortBy(string) {
     }
 }
 
-// sortBy(mainHeader.textContent);
+sortBy(mainHeader.textContent);
 
 console.log(mainHeader.textContent);
 butDrinks.addEventListener('click', () => {
